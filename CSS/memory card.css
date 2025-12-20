@@ -1,0 +1,99 @@
+/* The body style of the page */
+body{
+    background-image:url(../images/memory\ game.png);
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+    transition: 0.5s;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+    z-index: -1;
+}
+
+body.dimmed::before {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.start-btn{
+    position: absolute;
+    bottom: 12%;
+    left: 47%;
+    padding: 15px 30px;
+    font-size: 24px;
+    background-color: #0a6dc2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: none;
+}
+
+.start-btn:hover{
+    background-color: #084a8a;
+}
+/* header style of page */
+header{
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+/* main style of the page */
+
+/* Game stats */
+main .game-stats{
+    color: white;
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 20px;
+    width: 60%;
+    margin: auto;
+    border-radius: 8px;
+}
+main section>div{
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    padding: 0 20px;
+}
+
+main section .mouse-moves{
+    padding-right: 20px;
+    border-right: 1px solid white;
+}
+
+main .icon{
+    margin-right: 15px;
+}
+
+main>section .stat-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Restart button */
+main .restart-btn{
+    display: flex;
+    margin: auto;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
