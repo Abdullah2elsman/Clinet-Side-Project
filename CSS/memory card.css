@@ -1,6 +1,6 @@
-/* The body style of the page */
-body{
-    background-image:url(../images/memory\ game.png);
+/* The body of the page */
+body {
+    background-image: url(../images/memory\ game.png);
     background-position: center;
     background-size: cover;
     min-height: 100vh;
@@ -23,7 +23,7 @@ body.dimmed::before {
     background-color: rgba(0, 0, 0, 0.9);
 }
 
-.start-btn{
+.start-btn {
     position: absolute;
     bottom: 12%;
     left: 47%;
@@ -35,23 +35,32 @@ body.dimmed::before {
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
-    display: none;
 }
 
-.start-btn:hover{
+.start-btn:hover {
     background-color: #084a8a;
 }
-/* header style of page */
-header{
+
+/* header of page */
+header {
     color: white;
     text-align: center;
     padding: 30px;
 }
 
-/* main style of the page */
-
+/* main of the page */
+main{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* Game stats */
-main .game-stats{
+.game-play {
+    display: none;
+}
+
+.game-play .game-stats {
     color: white;
     display: flex;
     justify-content: center;
@@ -61,30 +70,31 @@ main .game-stats{
     margin: auto;
     border-radius: 8px;
 }
-main section>div{
+
+.game-play .game-stats>div {
     display: flex;
     justify-content: space-around;
     align-items: baseline;
     padding: 0 20px;
 }
 
-main section .mouse-moves{
+.game-play section .mouse-moves {
     padding-right: 20px;
     border-right: 1px solid white;
 }
 
-main .icon{
+.icon {
     margin-right: 15px;
 }
 
-main>section .stat-info{
+.game-play section .stat-info {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 /* Restart button */
-main .restart-btn{
+.game-play .restart-btn {
     display: flex;
     margin: auto;
     margin-top: 10px;
@@ -94,6 +104,169 @@ main .restart-btn{
     cursor: pointer;
 }
 
+/* cards */
+.game-play .cards {
+    width: 500px;
+    color: white;
+    margin: auto;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.game-play .cards .card {
+    background-color: transparent;
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.game-play .cards .inner-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+.game-play .cards .inner-card.is-flipped {
+    transform: rotateY(180deg);
+}
+.game-play .cards .card .front-face,
+.game-play .cards .card .back-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;   
+}
+.game-play .cards .card .front-face {
+    background-color: #1964fe;
+    border: 3px solid #50a2ff;
+    color: white;
+    font-size: 48px;
+}
+.game-play .cards .card .back-face {
+    background-color: #fbfcfd;
+    border: 3px solid #e4e6ea;
+    transform: rotateY(180deg);    
+    color: #364153;
+}
+.game-play .cards .card .back-face.correct {
+    background-color: #00d05c;
+    border: 3px solid #7bf1a8;
+    transform: rotateY(180deg);    
+    color: white;
+}
 
 
+/* Footer */
+.game-play footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
 
+.game-play footer .instruction {
+    color: #c7c7c7;
+}
+
+.game-play footer .note {
+    margin-top: 20px;
+    color: #ffdf20;
+}
+
+.win-stat, .loss-stat {
+    background-color: #f2f2f2;
+    color: #4a5565;
+    width: 50vw;
+    padding: 30px;
+    border-radius: 8px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 35px;
+}
+
+.win-stat .win-cup {
+    color: #f0b100;
+}
+
+.win-stat h3 {
+    color: #00a63e;
+}
+
+.loss-stat h3 {
+    color: #e7000b;
+}
+
+.win-stat .win-stars {
+    display: flex;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.win-stat .game-stats,
+.loss-stat .game-stats {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.win-stat .game-stats>div,
+.loss-stat .game-stats>div {
+    background-color: #f9fafb;
+    border-radius: 8px;
+    padding: 10px 20px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.win-stat .play-again-btn,
+.loss-stat .play-again-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    background-color: #0a6dc2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: linear-gradient(to right, #ad47ff, #f7339b);
+}
+
+.win-stat .note,
+.loss-stat .note {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #eff6ff;
+    color: #193cb8;
+    text-align: center;
+}
+
+.win-stat .note span,
+.loss-stat .note span {
+    font-weight: bold;
+}
+
+.win-stat {
+    display: none;
+}
+
+.loss-stat {
+    display: none;
+}

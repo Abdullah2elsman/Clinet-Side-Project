@@ -10,51 +10,174 @@
     <link rel="stylesheet" href="CSS/memory card.css">
 </head>
 
-<body class="dimmed">
-    <header>
+<body>
+    <header class="game-play">
         <h4>Memory Card Flip Game</h4>
         <h5>Match pairs of digital product icons!</h5>
     </header>
     <main>
-        <section class="game-stats">
-            <div class="mouse-moves">
-                <div class="icon">
-                    <i class="fa-solid fa-arrow-pointer"></i>
-                </div>
-                <div class="stat-info">
-                    <h4>Moves</h4>
-                    <h5>0</h5>
-                </div>
-            </div>
-            <div class="time-left">
-                <div class="icon">
-                    <i class="fa-solid fa-clock"></i>
-                </div>
-                <div class="stat-info">
-                    <h4>Time Left</h4>
-                    <h5>1:00</h5>
-                </div>
-            </div>
-        </section>
-        <button class="restart-btn">
-            <div class="icon">
-                <i class="fa-solid fa-rotate-left"></i>
-            </div>
-            <h4>
-                Restart Game
-            </h4>
-        </button>
-        <section class="cards">
-            <div class="card"></div>
-        </section>
-    </main>
-    <footer>
-        <h3>Click on cards to flip them and find matching pairs. You have 1 minute to match all 8 pairs!</h3>
-        <h3>Timer starts when you flip your first card!</h3>
-    </footer>
-    <button class="start-btn">Start</button>
+        <!-- Game start -->
+        <div class="game-start">
+            <button class="start-btn">Start</button>
+        </div>
 
-    <!-- <script src="JS/memory card.js"></script> -->
+        <!-- Game play -->
+        <div class="game-play">
+            <section class="game-stats">
+                <div class="mouse-moves">
+                    <div class="icon">
+                        <i class="fa-solid fa-arrow-pointer"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4>Moves</h4>
+                        <h5>0</h5>
+                    </div>
+                </div>
+                <div class="time-left">
+                    <div class="icon">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4>Time Left</h4>
+                        <h5>1:00</h5>
+                    </div>
+                </div>
+            </section>
+            <button class="restart-btn">
+                <div class="icon">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </div>
+                <h4>
+                    Restart Game
+                </h4>
+            </button>
+            <section id="cardContainer" class="cards">
+            </section>
+            <footer>
+                <h3 class="instruction">Click on cards to flip them and find matching pairs. You have 1 minute to match
+                    all 8
+                    pairs!</h3>
+                <h3 class="note">Timer starts when you flip your first card!</h3>
+            </footer>
+        </div>
+
+        <!-- Win stat -->
+        <div class="win-stat">
+            <div class="win-cup">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-trophy w-16 h-16 text-yellow-500 mx-auto mb-4" aria-hidden="true">
+                    <path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978"></path>
+                    <path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978"></path>
+                    <path d="M18 9h1.5a1 1 0 0 0 0-5H18"></path>
+                    <path d="M4 22h16"></path>
+                    <path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"></path>
+                    <path d="M6 9H4.5a1 1 0 0 1 0-5H6"></path>
+                </svg>
+            </div>
+
+            <h3 class="win-message">
+                You win! 🎉
+            </h3>
+            <div class="">
+                <h4>Excellent Work!</h4>
+            </div>
+
+            <div class="win-stars">
+                <div>⭐</div>
+                <div>⭐</div>
+                <div>⭐</div>
+            </div>
+
+            <div class="game-stats">
+                <section class="game-stats">
+                    <div class="mouse-moves">
+                        <div class="icon">
+                            <i class="fa-solid fa-arrow-pointer"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Moves</h4>
+                            <h5>0</h5>
+                        </div>
+                    </div>
+                    <div class="time-left">
+                        <div class="icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Time Left</h4>
+                            <h5>1:00</h5>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <button class="play-again-btn">
+                <div class="icon">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </div>
+                <h4>
+                    Play Again
+                </h4>
+            </button>
+            <div class="note">
+                💡 <span>Pro tip:</span> Try to remember the positions of cards you've seen. The fewer moves, the better
+                your score!
+            </div>
+        </div>
+        <div class="loss-stat">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-frown w-16 h-16 text-gray-500 mx-auto mb-4" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M16 16s-1.5-2-4-2-4 2-4 2"></path>
+                <line x1="9" x2="9.01" y1="9" y2="9"></line>
+                <line x1="15" x2="15.01" y1="9" y2="9"></line>
+            </svg>
+
+            <h3 class="loss-message">
+                Time's Up! ⏰
+            </h3>
+            <h4>Don't worry, try again and beat the clock!</h4>
+
+
+            <div class="game-stats">
+                <section class="game-stats">
+                    <div class="mouse-moves">
+                        <div class="icon">
+                            <i class="fa-solid fa-arrow-pointer"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Moves</h4>
+                            <h5>0</h5>
+                        </div>
+                    </div>
+                    <div class="time-left">
+                        <div class="icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Time Left</h4>
+                            <h5>1:00</h5>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <button class="play-again-btn">
+                <div class="icon">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </div>
+                <h4>
+                    Play Again
+                </h4>
+            </button>
+            <div class="note">
+                💡 <span>Pro tip:</span> Try to remember the positions of cards you've seen. The fewer moves, the better
+                your score!
+            </div>
+        </div>
+    </main>
+
+    <script src="JS/memory card.js"></script>
 </body>
 
 </html>
