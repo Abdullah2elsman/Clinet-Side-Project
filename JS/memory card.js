@@ -56,15 +56,27 @@ function initGame() {
 
 // Restart Game
 function restart() {
+    // 1. Hide stats and show game board
     winStat.style.display = 'none';
     lossStat.style.display = 'none';
     gamePlay[0].style.display = 'block';
     gamePlay[1].style.display = 'block';
-    let numberOfMoves = 0;
-    let numberOfCorrectMoves = 0;
+
+    // 2. Reset Global Variables (DO NOT use 'let' here)
+    numberOfMoves = 0;
+    numberOfCorrectMoves = 0;
     timeLeft = 60;
+    gameStarted = false; 
+    lockBoard = false;
+    hasFlippedCard = false;
+    firstCard = null;
+    secondCard = null;
+
+    // 3. Update UI
     gamePlayMoves.innerHTML = 0;
     gamePlayTime.innerHTML = "1:00";
+
+    // 4. Stop existing timer and regenerate cards
     clearInterval(timerId);
     initGame();
 }
