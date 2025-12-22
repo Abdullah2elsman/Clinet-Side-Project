@@ -1,9 +1,27 @@
     
-// Game Start
+// Game initialization
 const startBtn = document.querySelector('.start-btn');
 const body = document.body;
 const gamePlay = document.getElementsByClassName('game-play');
-console.log(gamePlay);
+const winStat = document.querySelector('.win-stat');
+const lossStat = document.querySelector('.loss-stat');
+
+// Moves and the time left
+const gamePlayMoves = document.querySelector('.mouse-moves .stat-info h5');
+const gamePlayTime = document.querySelector('.time-left .stat-info h5');
+
+const winMoves = winStat.querySelector('.mouse-moves .stat-info h5');
+const winTime = winStat.querySelector('.time-left .stat-info h5');
+
+const lossMoves = lossStat.querySelector('.mouse-moves .stat-info h5');
+const lossTime = lossStat.querySelector('.time-left .stat-info h5');
+
+
+let numberOfMoves = 0;
+let numberOfCorrectMoves = 0; // Use it to end the game when the use flip all corrects card;
+
+let timerId = null;
+let gameStarted = false;
 
 // Define Icons of cards and container
 const container = document.getElementById('cardContainer')
@@ -18,18 +36,38 @@ const cardIcons = [
     'fa-crow', 'fa-crow'
 ];
 
+// Game start
 startBtn.addEventListener('click', () => {
     startBtn.style.display = 'none';
     body.classList.add('dimmed');
     gamePlay[0].style.display = 'block';
     gamePlay[1].style.display = 'block';
-    console.log("Game Started!");
+    initGame();
+});
+
+function initGame() {
+    container.innerHTML = ''
     // Shuffle and Create Cards
     shuffledIcon = shuffle(cardIcons);
     shuffledIcon.forEach(icon => {
         createCard(icon)
     });
-});
+}
+
+// Restart Game
+function restart() {
+    winStat.style.display = 'none';
+    lossStat.style.display = 'none';
+    gamePlay[0].style.display = 'block';
+    gamePlay[1].style.display = 'block';
+    let numberOfMoves = 0;
+    let numberOfCorrectMoves = 0;
+    timeLeft = 60;
+    gamePlayMoves.innerHTML = 0;
+    gamePlayTime.innerHTML = "1:00";
+    clearInterval(timerId);
+    initGame();
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -99,8 +137,14 @@ let hasFlippedCard = false;
 let lockBoard = false; // This to prevent user click on the board to check the card
 let firstCard, secondCard;
 function flipCard(element) {
+    // Time start
+    if (!gameStarted) {
+        gameStarted = true;
+        startTimer();
+    }
 
     if (lockBoard) return;
+    if (element === firstCard) return;
     element.classList.toggle('is-flipped');
 
     // Check if the user flip a card or not
@@ -112,8 +156,8 @@ function flipCard(element) {
 
         // Check the matching
         if (firstCardIcon === secondCardIcon) {
+            
             // MATCH FOUND
-            console.log("Match!");
             
             // make the card correct
             firstCard.querySelector('.back-face').classList.add('correct');   
@@ -123,27 +167,71 @@ function flipCard(element) {
             firstCard.onclick = null;
             secondCard.onclick = null;
             resetVariables();
+
+            // increase number of moves
+            gamePlayMoves.innerHTML = ++numberOfMoves;
+            numberOfCorrectMoves++;
+            if (numberOfCorrectMoves === 8) {
+                gameOver(true);
+            }
         } else {
             lockBoard = true;
-        // NO MATCH
-        console.log("No Match!");
-        hasFlippedCard = false;
-        setTimeout(function () {
-            firstCard.classList.remove('is-flipped');
-            secondCard.classList.remove('is-flipped');
-            resetVariables();
-        }, 1000);
+            // NO MATCH
+            hasFlippedCard = false;
+            setTimeout(function () {
+                firstCard.classList.remove('is-flipped');
+                secondCard.classList.remove('is-flipped');
+                resetVariables();
+            }, 1000);
+            gamePlayMoves.innerHTML = ++numberOfMoves;
         }
         } else {
             firstCard = element;
             hasFlippedCard = true;
         }
 
-function resetVariables() {
-    firstCard = null;
-    secondCard = null;
-    lockBoard = false;
-    hasFlippedCard = false;
+    function resetVariables() {
+        firstCard = null;
+        secondCard = null;
+        lockBoard = false;
+        hasFlippedCard = false;
+    }
+
 }
 
+// Update time when game start
+let timeLeft = 60;
+
+async function startTimer() {
+    // Clear any existing timer first
+    clearInterval(timerId);
+
+    timerId = setInterval(() => {
+        timeLeft--;
+        
+        // Update the screen
+        gamePlayTime.innerText = timeLeft;
+
+        // Check if time is up
+        if (timeLeft <= 0) {
+            clearInterval(timerId); // Stop the timer
+            gameOver(false); // Call your game over function
+        }
+    }, 1000); // 1000ms = 1 second
+}
+
+function gameOver(win) {
+    lockBoard = true; // Stop the user from playing
+    gamePlay[0].style.display = 'none';
+    gamePlay[1].style.display = 'none';
+    if (win) {
+        winStat.style.display = 'flex';
+        winMoves.innerHTML = numberOfMoves;
+        winTime.innerHTML = timeLeft;
+        clearInterval(timerId)
+    } else {
+        lossStat.style.display = 'flex';
+        lossMoves.innerHTML = numberOfMoves;
+        lossTime.innerHTML = timeLeft;
+    }
 }
