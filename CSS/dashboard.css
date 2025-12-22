@@ -1,0 +1,120 @@
+html, body{
+    height: 100%;
+}
+body{
+    height: 100%;
+    background: linear-gradient(45deg,#ffbcd2, #ecdfe3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body.dimmed .logo {
+    filter: brightness(0.5) blur(2px);
+    transition: 0.5s;
+}
+
+
+
+.logo {
+    display: flex;
+    flex-direction: column;
+}
+.logo h1 {
+    font-family: "Salsa", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 90px;
+    color: #fd0054;
+    margin: 0;
+    letter-spacing: 5px;
+    margin: auto;
+}
+
+.logo button,
+.overlay button{
+    font-family: "Salsa", cursive;
+    font-weight: 400;
+    font-style: normal;
+    background: turquoise;
+    padding: 20px;
+    border-radius: 8px;
+    border: none;
+    color: #fd0054;
+    font-size: 30px;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.logo button:hover{
+    background: #fd0054;
+    color: white;
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    /* Darkens the background */
+    display: none;
+    /* Hidden initially */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* When the overlay is active */
+.overlay.active {
+    display: flex;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    margin-top: 10%;
+}
+
+.game-card {
+    width: 150px;
+    height: 200px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.game-card img {
+    max-width: 100%;
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    background: #ffbcd2;
+}
+
+#closeBtn {
+    margin-top: 30px;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+#closeBtn:hover {
+    background: white;
+    color: #fd0054;
+}
