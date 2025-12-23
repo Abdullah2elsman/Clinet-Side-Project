@@ -1,0 +1,257 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    background: #ffffff;
+    margin: 90px;
+}
+
+.board {
+    display: none;
+    grid-template-columns: repeat(3, 100px);
+    gap: 10px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+h1 {
+    color: #667eea;
+}
+
+#status {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.playerName {
+    color: #667eea;
+}
+
+.error-message {
+    color: #ff4444;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.input input.invalid {
+    border-color: #ff4444;
+}
+
+.input input.valid {
+    border-color: #4CAF50;
+}
+
+
+
+.cell {
+    width: 100px;
+    height: 90px;
+    background: white;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid #e7e7e7;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.cell:hover {
+    background-color: #667eea;
+    transition: background-color 0.3s ease;
+}
+
+
+.cell:empty:hover {
+    background-color: #667eea;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.cell:not(:empty) {
+    cursor: not-allowed;
+
+}
+
+.cell:not(:empty):hover {
+    color: white;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: auto;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+
+.title {
+    font-size: 35px;
+    color: #667eea;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.players {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.input {
+    flex: 1;
+}
+
+.input label {
+    display: block;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: left;
+    margin-left: 13px;
+}
+
+.input input {
+    width: 85%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s;
+    background: #f5f5f5;
+}
+
+.player-input input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+}
+
+#Start {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 50%;
+}
+
+#Start:hover:not(:disabled) {
+    background: #667eea;
+    ;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+#Start:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+
+
+#Restart {
+    display: none;
+    padding: 10px 20px;
+    background: #667eea;
+    ;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+
+.winner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.winner-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.winner-content h2 {
+    font-size: 28px;
+    color: #667eea;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.winner-content p {
+    font-size: 15px;
+    color: #9b9898;
+    margin-bottom: 30px;
+}
+
+.result-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.result-buttons button {
+    width: 150px;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #667eea;
+    color: white;
+    transition: all 0.3s;
+}
+
+.result-buttons button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    background-color: white;
+    color: #667eea;
+    ;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OXO Game</title>
+    <link rel="stylesheet" href="CSS/XOStyle.css">
+</head>
+<body>
+
+<h1>OXO</h1>
+<p id="status"></p>
+
+<div id="popup" class="popup">
+  <div class="popup-content" id="popup-content">
+            <h1 class="title">Let's Play OXO!</h1>
+            <p class="subtitle">Get started</p>
+            
+            <div class="players">
+                <div class="input">
+                    <label>Player X</label>
+                    <input type="text" id="playerX" placeholder="Name">
+                   <span class="error-message" id="errorX">Name must be at least 2 letters</span>
+                </div>
+                <div class="input">
+                    <label>Player O</label>
+                    <input type="text" id="playerO" placeholder="Name">
+                   <span class="error-message" id="errorO">Name must be at least 2 letters</span>
+                </div>
+            </div>
+            
+            <button id="Start" disabled>Start Game</button>
+        </div>
+
+</div>
+<div class="board" id="board">
+    <button class="cell" data-index="0"></button>
+    <button class="cell" data-index="1"></button>
+    <button class="cell" data-index="2"></button>
+    <button class="cell" data-index="3"></button>
+    <button class="cell" data-index="4"></button>
+    <button class="cell" data-index="5"></button>
+    <button class="cell" data-index="6"></button>
+    <button class="cell" data-index="7"></button>
+    <button class="cell" data-index="8"></button>
+</div>
+
+
+<button id="Restart">Restart</button>
+
+ <div class="winner" id="winner">
+        <div class="winner-content">
+            <h2 id="heading"></h2>
+            <p id="text"></p>
+            <div class="result-buttons">
+                <button class="play-again-btn" id="playAgain">Play Again</button>
+                <button class="exit-btn" onclick="location.reload()">Exit</button>
+            </div>
+        </div>
+    </div>
+
+
+<script src="JS/XOScript.js"></script>
+</body>
+</html>
