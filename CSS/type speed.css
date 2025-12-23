@@ -1,0 +1,179 @@
+/* Import Google Font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #e7f2fd;
+  color: #333;
+}
+
+.container {
+  width: 700px;
+  padding: 35px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+}
+
+header h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.75rem;
+    color: #4070f4;
+}
+
+.game-box .input-field {
+  z-index: -999;
+  opacity: 0;
+  position: absolute;
+}
+
+.typing-text {
+    max-height: 250px;
+    overflow-y: auto;
+    font-size: 1.35rem;
+    text-align: justify;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+    margin-bottom: 25px;
+    /* Hide scrollbar */
+    scrollbar-width: none; 
+}
+.typing-text::-webkit-scrollbar {
+    display: none;
+}
+
+.typing-text p {
+    color: #646669; /* Default text color */
+}
+
+/* Character states */
+.typing-text span {
+  position: relative;
+}
+
+.typing-text span.correct {
+  color: #4070f4; /* Theme blue for correct */
+}
+
+.typing-text span.incorrect {
+  color: #cb3439; /* Soft red for errors */
+  background: #ffc0c255;
+  border-radius: 4px;
+}
+
+/* Cursor blink animation */
+.typing-text span.active {
+    color: #4070f4;
+}
+.typing-text span.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  height: 2px;
+  width: 100%;
+  background: #4070f4;
+  opacity: 0;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 1; }
+}
+
+.content {
+  display: flex;
+  padding: 12px 0;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ccc;
+}
+
+.result-details {
+  display: flex;
+  width: calc(100% - 140px);
+  justify-content: space-between;
+}
+
+.result-details li {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  list-style: none;
+  font-size: 1rem;
+  position: relative;
+}
+
+.result-details li p {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.result-details li span {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.try-again-btn, .modal-restart-btn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: #4070f4;
+  padding: 10px 25px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.try-again-btn:hover, .modal-restart-btn:hover {
+  background: #2c52b3;
+}
+
+.try-again-btn:active {
+  transform: scale(0.97);
+}
+
+/* Modal styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+
+.final-stats {
+    margin: 20px 0;
+    font-size: 1.2rem;
+}

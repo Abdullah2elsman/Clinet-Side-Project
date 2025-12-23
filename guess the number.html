@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess The Number</title>
+    <link rel="stylesheet" href="CSS/guess the number.css">
+</head>
+<body>
+
+<div class="game-container">
+    <h1>Guess The Number 🎯</h1>
+
+    <p class="info">
+        I have chosen a number between <b>1</b> and <b>100</b>.  
+        Try to guess it!
+    </p>
+
+    <input type="number" id="userGuess" placeholder="Enter your guess">
+
+    <button onclick="checkGuess()">Check</button>
+
+    <p id="message"></p>
+
+    <button class="reset" onclick="resetGame()">Restart Game</button>
+</div>
+
+<script src="JS/guess the number.js"></script>
+</body>
+</html>
